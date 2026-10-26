@@ -8,7 +8,7 @@ __pycache__/
 
 # Spark / Data
 spark-warehouse/
-checkpoint/
+src/checkpoints/*
 *.json
 *.parquet
 *.csv

@@ -22,7 +22,7 @@ def main():
 
     # 2. Pre-create the Aggregation Iceberg Table
     spark.sql("""
-        CREATE OR REPLACE TABLE finstream.public.user_fraud_velocity (
+        CREATE TABLE IF NOT EXISTS finstream.public.user_fraud_velocity (
             user_id STRING,
             window_start TIMESTAMP,
             window_end TIMESTAMP,

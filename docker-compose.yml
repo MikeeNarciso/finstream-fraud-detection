@@ -5,12 +5,12 @@ services:
     ports:
       - "8082:8082"
     env_file: 
-      - ../.env
+      - ./.env
     environment:
       - AWS_ACCESS_KEY_ID
       - AWS_SECRET_ACCESS_KEY
       - AWS_SESSION_TOKEN
-      - AWS_REGION=eu-north-1
+      - AWS_REGION
     volumes:
       - ./trino/etc/catalog:/etc/trino/catalog
     networks:
@@ -55,7 +55,7 @@ services:
     user: root
     command: /opt/spark/bin/spark-class org.apache.spark.deploy.master.Master --host spark-master
     env_file: 
-      - ../.env
+      - ./.env
     ports:
       - "8080:8080"
       - "7077:7077"
@@ -73,7 +73,7 @@ services:
     user: root
     command: /opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077 --cores 2 --memory 2G
     env_file: 
-      - ../.env
+      - ./.env
     environment:
       - SPARK_NO_DAEMONIZE=true
     depends_on:
